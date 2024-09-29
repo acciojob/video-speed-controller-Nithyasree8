@@ -8,23 +8,18 @@
 </head>
 <body>
     <div class="player">
-        <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+        <video id="video" class="player__video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
         <div class="player__controls">
-            <button class="player__button" id="play-pause-btn">►</button>
+            <button id="player__button" class="player__button">►</button>
+            <button id="rewind" class="player__button">« 10s</button>
+            <button id="fastforward" class="player__button">25s »</button>
+            <input type="range" id="volume" class="player__slider" min="0" max="1" step="0.05" value="0.75">
+            <input type="range" id="playbackSpeed" class="player__slider" min="0.5" max="2" step="0.1" value="1">
             <div class="progress">
-                <div class="progress__filled" id="progress-filled"></div>
+                <div id="progress__filled" class="progress__filled"></div>
             </div>
-            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.75">
-            <label for="volume">Volume</label>
-            <input type="range" id="playbackSpeed" min="0.5" max="2" step="0.1" value="1">
-            <label for="playbackSpeed">Speed</label>
-            <button class="skip-btn" id="rewind-btn">« 10s</button>
-            <button class="skip-btn" id="forward-btn">25s »</button>
         </div>
     </div>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-  

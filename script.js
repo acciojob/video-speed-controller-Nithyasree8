@@ -1,47 +1,42 @@
 const video = document.getElementById('video');
-const playPauseBtn = document.getElementById('play-pause-btn');
-const progressFilled = document.getElementById('progress-filled');
-const volumeInput = document.getElementById('volume');
-const playbackSpeedInput = document.getElementById('playbackSpeed');
-const rewindBtn = document.getElementById('rewind-btn');
-const forwardBtn = document.getElementById('forward-btn');
+const playButton = document.getElementById('player__button');
+const rewindButton = document.getElementById('rewind');
+const fastForwardButton = document.getElementById('fastforward');
+const volumeSlider = document.getElementById('volume');
+const playbackSpeedSlider = document.getElementById('playbackSpeed');
+const progressFilled = document.getElementById('progress__filled');
 
-// Update progress bar
-video.addEventListener('timeupdate', () => {
-    const progress = (video.currentTime / video.duration) * 100;
-    progressFilled.style.width = `${progress}%`;
-});
+playButton.addEventListener('click', togglePlay);
+video.addEventListener('click', togglePlay);
+video.addEventListener('timeupdate', updateProgress);
+rewindButton.addEventListener('click', () => video.currentTime -= 10);
+fastForwardButton.addEventListener('click', () => video.currentTime += 25);
+volumeSlider.addEventListener('input', updateVolume);
+playbackSpeedSlider.addEventListener('input', updatePlaybackSpeed);
 
-// Toggle play/pause
-playPauseBtn.addEventListener('click', () => {
+function togglePlay() {
     if (video.paused) {
         video.play();
-        playPauseBtn.textContent = '❚ ❚';
+        playButton.textContent = '❚ ❚'; // Change to pause icon
     } else {
         video.pause();
-        playPauseBtn.textContent = '►';
+        playButton.textContent = '►'; // Change to play icon
     }
-});
+}
 
-// Update volume
-volumeInput.addEventListener('input', () => {
-    video.volume = volumeInput.value;
-});
+function updateProgress() {
+    const percent = (video.currentTime / video.duration) * 100;
+    progressFilled.style.width = `${percent}%`;
+}
 
-// Update playback speed
-playbackSpeedInput.addEventListener('input', () => {
-    video.playbackRate = playbackSpeedInput.value;
-});
+function updateVolume() {
+    video.volume = volumeSlider.value;
+}
 
-// Rewind 10 seconds
-rewindBtn.addEventListener('click', () => {
-    video.currentTime -= 10;
-});
+function updatePlaybackSpeed() {
+    video.playbackRate = playbackSpeedSlider.value;
+}
 
-// Forward 25 seconds
-forwardBtn.addEventListener('click', () => {
-    video.currentTime += 25;
-});
 
 
 
