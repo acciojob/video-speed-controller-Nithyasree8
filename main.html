@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Video Player</title>
+    <title>Video Speed Controller</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="player">
-        <video id="video" src="(link unavailable)"></video>
+        <video class="player__video" id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
         <div class="controls">
+            <button class="toggle" id="play-pause">►</button>
+            <button class="toggle" id="rewind">« 10s</button>
+            <button class="toggle" id="forward">25s »</button>
+            <input type="range" id="volume" min="0" max="1" value="0.5" step="0.01">
+            <input type="range" id="playbackSpeed" min="0.5" max="2" value="1" step="0.1">
             <div class="progress">
                 <div class="progress__filled" id="progress-filled"></div>
             </div>
-            <button class="player__button" id="play-pause">►</button>
-            <input type="range" id="volume" min="0" max="1" value="0.75" step="0.01">
-            <label for="volume">Volume</label>
-            <input type="range" id="playbackSpeed" min="0.5" max="2" value="1" step="0.1">
-            <label for="playbackSpeed">Speed</label>
-            <button class="skip-button" id="rewind">« 10s</button>
-            <button class="skip-button" id="forward">25s »</button>
         </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
 
