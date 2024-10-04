@@ -1,45 +1,44 @@
+
 const video = document.getElementById('video');
-const playButton = document.getElementById('player__button');
+const playPauseButton = document.getElementById('play-pause');
+const progressFilled = document.getElementById('progress-filled');
+const volumeInput = document.getElementById('volume');
+const playbackSpeedInput = document.getElementById('playbackSpeed');
 const rewindButton = document.getElementById('rewind');
-const fastForwardButton = document.getElementById('fastforward');
-const volumeSlider = document.getElementById('volume');
-const playbackSpeedSlider = document.getElementById('playbackSpeed');
-const progressFilled = document.getElementById('progress__filled');
+const forwardButton = document.getElementById('forward');
 
-playButton.addEventListener('click', togglePlay);
-video.addEventListener('click', togglePlay);
-video.addEventListener('timeupdate', updateProgress);
-rewindButton.addEventListener('click', () => video.currentTime -= 10);
-fastForwardButton.addEventListener('click', () => video.currentTime += 25);
-volumeSlider.addEventListener('input', updateVolume);
-playbackSpeedSlider.addEventListener('input', updatePlaybackSpeed);
-
-function togglePlay() {
+// Play/Pause functionality
+playPauseButton.addEventListener('click', () => {
     if (video.paused) {
         video.play();
-        playButton.textContent = '❚ ❚'; // Change to pause icon
+        playPauseButton.textContent = '❚ ❚';
     } else {
         video.pause();
-        playButton.textContent = '►'; // Change to play icon
+        playPauseButton.textContent = '►';
     }
-}
+});
 
-function updateProgress() {
-    const percent = (video.currentTime / video.duration) * 100;
-    progressFilled.style.width = `${percent}%`;
-}
+// Progress bar functionality
+video.addEventListener('timeupdate', () => {
+    const progress = (video.currentTime / video.duration) * 100;
+    progressFilled.style.width = `${progress}%`;
+});
 
-function updateVolume() {
-    video.volume = volumeSlider.value;
-}
+// Volume control functionality
+volumeInput.addEventListener('input', () => {
+    video.volume = volumeInput.value;
+});
 
-function updatePlaybackSpeed() {
-    video.playbackRate = playbackSpeedSlider.value;
-}
+// Playback speed control functionality
+playbackSpeedInput.addEventListener('input', () => {
+    video.playbackRate = playbackSpeedInput.value;
+});
 
+// Rewind functionality
+rewindButton.addEventListener('click', () => {
+    video.currentTime -= 10;
+});
 
-
-
-      
-
-     
+// Forward functionality
+forwardButton.addEventListener('click', () => {
+ 
