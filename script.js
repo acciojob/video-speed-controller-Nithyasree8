@@ -44,3 +44,5 @@ video.addEventListener('timeupdate', () => {
     const progress = (video.currentTime / video.duration) * 100;
     progressFilled.style.width = `${progress}%`;
 });
+
+
